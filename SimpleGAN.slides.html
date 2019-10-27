@@ -13222,7 +13222,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Generative-Adversarial-Networks-(GANs)">Generative Adversarial Networks (GANs)<a class="anchor-link" href="#Generative-Adversarial-Networks-(GANs)">&#182;</a></h1><h3 id="GANs--have-been-used-most-widely-in-image-generation-contexts,-but-there-is-no-reason-they-cannot-be-applied-equally-to-other-domains.">GANs  have been used most widely in image generation contexts, but there is no reason they cannot be applied equally to other domains.<a class="anchor-link" href="#GANs--have-been-used-most-widely-in-image-generation-contexts,-but-there-is-no-reason-they-cannot-be-applied-equally-to-other-domains.">&#182;</a></h3>
+<h1 id="Generative-Adversarial-Networks-(GANs)">Generative Adversarial Networks (GANs)<a class="anchor-link" href="#Generative-Adversarial-Networks-(GANs)">&#182;</a></h1><h3 id="GANs--have-been-used-most-widely-in-image-generation-contexts">GANs  have been used most widely in image generation contexts<a class="anchor-link" href="#GANs--have-been-used-most-widely-in-image-generation-contexts">&#182;</a></h3><h3 id="Can-be-applied-equally-to-other-domains">Can be applied equally to other domains<a class="anchor-link" href="#Can-be-applied-equally-to-other-domains">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
@@ -13302,12 +13302,69 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The basic idea in a GAN is to run <em>two</em> neural networks in competition—hence the "adversarial" part of the name.</p>
-<p>One neural network is a "generator." Its goal is to generate new data that cannot be distinguished from genuine samples used to develop the GAN.  I.e. we <strong>do</strong> need to start with training datasets, but we do not have any known target feature that identifies correctness.  This is an unsupervised network, but correctness is defined by "belonging to the training set" as opposed to being any other (distribution of) possible values for the features.</p>
-<p>The other neural network is the "discriminator." Its goal is to distinguish synthetic samples or observations from genuine ones.  The discriminator engages in a kind of supervised learning, since we the developers <em>do know</em> which image is which and can provide feedback to the discriminator.  While supervised models are very powerful, real world data is rarely trying actively to fool them about the class a datum belongs to.  In the GAN model, the adversary is specifically trying to outwit the classifier.</p>
-<p>Of course, there are some cases in the real world where fake data tries actively to pass itself off.  In forgery or fraud, a malicious actor is trying to create currency, or artwork, or some other item that can pass inspection by (human or machine) discriminators.  And many kinds of fraud involve trying to create transactions or messages that are difficult to distinguish from legitimate ones.  Unfortunately, GANs will probably be—in fact, probably already are—used to aid in some such fraud.</p>
-<p>This O'Reilly Press illustration is a good summary:</p>
+<p>One neural network in a GAN is a "generator"</p>
+<ul>
+<li>Generate new data that cannot be distinguished from genuine samples</li>
+<li>We start with training datasets, but do not know what identifies correctness.  </li>
+<li>Correctness is defined by "belonging to the training set" </li>
+<li>...as opposed to being any other (distribution of) possible values for the features</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The second neural network is a "discriminator."</p>
+<ul>
+<li>Distinguish synthetic samples from genuine ones</li>
+<li>The discriminator uses supervised learning, since <strong>we</strong> know which images are fake</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Real world versus GANs:</p>
+<ul>
+<li>Real world data is rarely activately tries to fool a network</li>
+<li>GAN: generator is specifically trying to outwit the discriminator</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However...</p>
+<ul>
+<li>In forgery or fraud, a malicious actor is trying to create currency, or artwork, or some other item that can pass inspection by (human or machine) discriminators</li>
+<li>In evolution, some organisms use camoflage to appear as something else</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This O'Reilly Press illustration is a good overview of the structure of a GAN:</p>
 <p><img src="img/gan_schema.png" alt="GAN schema"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Super-Resolution">Super-Resolution<a class="anchor-link" href="#Super-Resolution">&#182;</a></h3><p>A fascinating application of GANs is <a href="https://arxiv.org/abs/1609.04802">super-resolution</a>.</p>
+<p>Essentially, we train the discriminator to recognize "high-resolution" and provide the generator with low-resolution, but real images as its input vector.</p>
+<p><img src="img/super-resolution.png" alt="Super-resolution"></p>
+<p><small>Image credit: [Christopher Thomas](https://towardsdatascience.com/deep-learning-based-super-resolution-without-using-a-gan-11c9bb5b6cd5)</small></p>
 
 </div>
 </div>
@@ -13315,11 +13372,12 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="A-toy-example">A toy example<a class="anchor-link" href="#A-toy-example">&#182;</a></h3><p>For our sample code, we borrow and minimally change a GAN written by Dev Nag in his blog post <a href="https://medium.com/@devnag/generative-adversarial-networks-gans-in-50-lines-of-code-pytorch-e81b79659e3f">Generative Adversarial Networks (GANs) in 50 lines of code (PyTorch)</a>.  Given that it is a toy, designed for simplicity of presentation, all this GAN is trying to learn is a Gaussian random distribution.</p>
+<h3 id="A-toy-example">A toy example<a class="anchor-link" href="#A-toy-example">&#182;</a></h3><p>The code shown is adapted from a GAN written by Dev Nag in his blog post <a href="https://medium.com/@devnag/generative-adversarial-networks-gans-in-50-lines-of-code-pytorch-e81b79659e3f">Generative Adversarial Networks (GANs) in 50 lines of code (PyTorch)</a>.</p>
+<p>For simplicity of presentation, all this GAN is trying to learn is a Gaussian random distribution.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -13368,18 +13426,18 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Create-the-dataset">Create the dataset<a class="anchor-link" href="#Create-the-dataset">&#182;</a></h3><p>First thing, initialize the dataset in our mentioned random distribution.  We have a number of choices about what "features" of the data we wish to model.  For this example, we use simply the first four moments of the data, but we could easily use the raw points, or other abstractions of the "shape" of the data, as we wished.</p>
+<h3 id="Create-the-dataset">Create the dataset<a class="anchor-link" href="#Create-the-dataset">&#182;</a></h3><p>We can easily create samples from a Gaussian distribution.  The <strong>features</strong> we will us to characterize a sample are the first four moments of the sample; we could easily use the raw points, or other abstractions of the "shape" of the data, as we wish.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_moments</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
@@ -13395,8 +13453,19 @@ a.anchor-link {
     <span class="n">final</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">mean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">std</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> 
                        <span class="n">skews</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">kurtoses</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,)))</span>
     <span class="k">return</span> <span class="n">final</span>
+</pre></div>
 
-<span class="c1"># Data points</span>
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data points</span>
 <span class="k">def</span> <span class="nf">d_sampler</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.25</span><span class="p">):</span>
     <span class="s2">&quot;Provide `n` random Gaussian distributed points with mean `mu` and std `sigma`&quot;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
@@ -13412,7 +13481,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13445,7 +13514,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -13494,7 +13563,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
